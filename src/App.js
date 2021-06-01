@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
-import Layout from "./components/Layout/Layout";
+import Layout from "./components/Layout";
 import WeatherApp from "./components/WeatherApp/WeatherApp";
 
 const GlobalStyle = createGlobalStyle`
@@ -16,7 +16,7 @@ const App = () => {
   return (
     <React.Fragment>
       <GlobalStyle />
-      <Layout title="weather app">
+      <Layout title="Jason Zhang's Weather App">
         <WeatherApp />
       </Layout>
     </React.Fragment>

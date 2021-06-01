@@ -1,34 +1,36 @@
 import React from "react";
 import styled from "styled-components";
 
+import WeatherToday from "./components/WeatherToday";
+
 const Layout = styled.div`
   display: flex;
+  flex-wrap: wrap;
   overflow: hidden;
   border-radius: 0.5rem;
 `;
 
-const WeatherToday = styled.div`
-  flex: 1;
-  height: 10rem;
-  background-color: #c9e7c5;
-`;
 const TwitterFeed = styled.div`
-  flex: 1;
-
+  width: 50%;
   height: 10rem;
   background-color: #c5e2e7;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;
 const WeatherFuture = styled.div`
-  flex: 1;
-
+  width: 50%;
   height: 10rem;
   background-color: #d9c5e7;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 const WeatherApp = () => {
   return (
     <Layout>
-      <WeatherToday>WeatherToday</WeatherToday>
+      <WeatherToday />
       <TwitterFeed>TwitterFeed</TwitterFeed>
       <WeatherFuture>WeatherFuture</WeatherFuture>
     </Layout>
