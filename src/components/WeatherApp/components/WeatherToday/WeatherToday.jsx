@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import InfoToday from "./components/InfoToday";
+import WeatherInfoToday from "./components/WeatherInfoToday";
 import CityInfo from "./components/CityInfo";
 
 const Wrapper = styled.div`
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 const WeatherToday = () => {
   return (
     <Wrapper>
-      <InfoToday />
+      <WeatherInfoToday />
       <CityInfo />
     </Wrapper>
   );
