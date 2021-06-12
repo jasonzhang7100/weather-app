@@ -20,15 +20,34 @@ const SearchInput = styled.input``;
 
 const SearchButton = styled.button``;
 
-const Header = ({ title }) => (
-  <NavBar>
-    <LoginMenu>Login</LoginMenu>
-    <Title>{title}</Title>
-    <Search>
-      <SearchInput />
-      <SearchButton>SEARCH</SearchButton>
-    </Search>
-  </NavBar>
-);
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.passCityName = this.passCityName.bind(this);
+  }
+
+  myRef = React.createRef();
+
+  passCityName() {
+    const { searchCity } = this.props;
+    const { value } = this.myRef.current;
+    console.log(value);
+    searchCity(value);
+  }
+
+  render() {
+    const { title } = this.props;
+    return (
+      <NavBar>
+        <LoginMenu>Login</LoginMenu>
+        <Title>{title}</Title>
+        <Search>
+          <SearchInput ref={this.myRef} />
+          <SearchButton onClick={this.passCityName}>SEARCH</SearchButton>
+        </Search>
+      </NavBar>
+    );
+  }
+}
 
 export default Header;

@@ -7,9 +7,8 @@ const Wrapper = styled.div`
 `;
 
 const CityName = styled.div`
-  width: 8rem;
   padding: 0.5rem;
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid white;
   font: 350 2rem "Microsoft Yahei";
   @media screen and (min-width: 767px) {
     position: absolute;
@@ -18,10 +17,10 @@ const CityName = styled.div`
   }
 `;
 
-const CityInfo = () => {
+const CityInfo = ({ city }) => {
   return (
     <Wrapper>
-      <CityName>Sydney</CityName>
+      <CityName>{city.name}</CityName>
     </Wrapper>
   );
 };

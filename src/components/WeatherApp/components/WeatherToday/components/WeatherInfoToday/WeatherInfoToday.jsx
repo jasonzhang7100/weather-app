@@ -27,14 +27,15 @@ const OtherMetirc = styled.span`
   text-align: center;
 `;
 
-const WeatherInfoToday = () => {
+const WeatherInfoToday = ({ weatherToday }) => {
+  const { weather, temp, humidity, wind } = weatherToday;
   return (
     <Wrapper>
       <InfoCard>
-        <TempMetric>12℃</TempMetric>
-        <WeatherMetirc>CLOUDY</WeatherMetirc>
-        <OtherMetirc>HUMIDITY 64%</OtherMetirc>
-        <OtherMetirc>WIND 12K/M</OtherMetirc>
+        <TempMetric>{temp}度</TempMetric>
+        <WeatherMetirc>{weather}</WeatherMetirc>
+        <OtherMetirc>HUMIDITY {humidity}%</OtherMetirc>
+        <OtherMetirc>WIND {wind} K/M</OtherMetirc>
       </InfoCard>
     </Wrapper>
   );

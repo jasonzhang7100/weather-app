@@ -8,14 +8,16 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   height: 20rem;
-  background-color: #c9e7c5;
+  background: url("src/images/cloudy.jpeg") no-repeat fixed center;
+  background-size: cover;
+  color: #fff;
 `;
 
-const WeatherToday = () => {
+const WeatherToday = ({ city, weatherToday }) => {
   return (
     <Wrapper>
-      <WeatherInfoToday />
-      <CityInfo />
+      <WeatherInfoToday weatherToday={weatherToday} />
+      <CityInfo city={city} />
     </Wrapper>
   );
 };

@@ -6,7 +6,7 @@ const FooterBar = styled.div`
   bottom: 0;
   width: 100%;
   height: 2.5rem;
-  background-color: #222;
+  background-color: #000;
   color: #fff;
   line-height: 2.5rem;
   text-align: center;
