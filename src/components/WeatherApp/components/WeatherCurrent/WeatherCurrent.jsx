@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   background: no-repeat fixed center
     url("src/images/${({ caseName }) => caseName}.jpeg");
   background-size: cover;
-  color: #fff;
+  color: ${({ caseName }) => (caseName == "sunny" ? "#000" : "#fff")};
 `;
 
 const WeatherCurrent = ({ cityName, weatherCurrent }) => {
