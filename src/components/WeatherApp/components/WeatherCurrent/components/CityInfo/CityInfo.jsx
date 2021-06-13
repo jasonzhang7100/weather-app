@@ -17,10 +17,10 @@ const CityName = styled.div`
   }
 `;
 
-const CityInfo = ({ city }) => {
+const CityInfo = ({ cityName }) => {
   return (
     <Wrapper>
-      <CityName>{city.name}</CityName>
+      <CityName>{cityName}</CityName>
     </Wrapper>
   );
 };

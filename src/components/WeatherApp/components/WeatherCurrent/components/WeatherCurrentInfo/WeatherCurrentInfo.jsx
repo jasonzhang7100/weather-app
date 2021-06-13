@@ -27,18 +27,19 @@ const OtherMetirc = styled.span`
   text-align: center;
 `;
 
-const WeatherInfoToday = ({ weatherToday }) => {
-  const { weather, temp, humidity, wind } = weatherToday;
+const WeatherCurrentInfo = ({ weatherCurrent }) => {
+  const { tempCurrent, conditionCurrent, humidityCurrent, windCurrent } =
+    weatherCurrent;
   return (
     <Wrapper>
       <InfoCard>
-        <TempMetric>{temp}度</TempMetric>
-        <WeatherMetirc>{weather}</WeatherMetirc>
-        <OtherMetirc>HUMIDITY {humidity}%</OtherMetirc>
-        <OtherMetirc>WIND {wind} K/M</OtherMetirc>
+        <TempMetric>{tempCurrent}度</TempMetric>
+        <WeatherMetirc>{conditionCurrent}</WeatherMetirc>
+        <OtherMetirc>HUMIDITY {humidityCurrent}%</OtherMetirc>
+        <OtherMetirc>WIND {windCurrent} K/M</OtherMetirc>
       </InfoCard>
     </Wrapper>
   );
 };
 
-export default WeatherInfoToday;
+export default WeatherCurrentInfo;
