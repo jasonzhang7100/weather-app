@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const NavBar = styled.div`
   display: flex;
@@ -23,7 +24,7 @@ const SearchButton = styled.button``;
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { cityName: "" };
+    this.state = { cityName: '' };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -52,5 +53,10 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  searchCity: PropTypes.func.isRequired,
+};
 
 export default Header;

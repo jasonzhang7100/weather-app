@@ -1,9 +1,10 @@
-import React from "react";
-import regeneratorRuntime from "regenerator-runtime";
-import { createGlobalStyle } from "styled-components";
+import React from 'react';
+// eslint-disable-next-line no-unused-vars
+import regeneratorRuntime from 'regenerator-runtime';
+import { createGlobalStyle } from 'styled-components';
 
-import Layout from "./components/Layout";
-import WeatherApp from "./components/WeatherApp";
+import Layout from './components/Layout';
+import WeatherApp from './components/WeatherApp';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -19,10 +20,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cityName: "Sydney",
+      cityName: 'Sydney',
       weatherCurrent: {
         tempCurrent: 0,
-        conditionCurrent: "",
+        conditionCurrent: '',
         humidityCurrent: 0,
         windCurrent: 0,
       },
@@ -33,8 +34,8 @@ class App extends React.Component {
     this.getWeatherInfo = this.getWeatherInfo.bind(this);
   }
 
-  searchCity(cityName) {
-    this.setState({ isLoading: true, cityName }, this.getWeatherInfo);
+  componentDidMount() {
+    this.getWeatherInfo();
   }
 
   async getWeatherInfo() {
@@ -43,8 +44,11 @@ class App extends React.Component {
     const res = await fetch(url);
     const result = await res.json();
     const { current, forecast } = result;
-    const { temp_c, condition, wind_kph, humidity } = current;
-    const weatherForecast = forecast.forecastday.map(i => ({
+    const {
+      // eslint-disable-next-line camelcase
+      temp_c, condition, wind_kph, humidity,
+    } = current;
+    const weatherForecast = forecast.forecastday.map((i) => ({
       date: i.date,
       conditionForecast: i.day.condition.text,
       icon: i.day.condition.icon,
@@ -62,14 +66,16 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount() {
-    this.getWeatherInfo();
+  searchCity(cityName) {
+    this.setState({ isLoading: true, cityName }, this.getWeatherInfo);
   }
 
   render() {
-    const { cityName, weatherCurrent, weatherForecast, isLoading } = this.state;
+    const {
+      cityName, weatherCurrent, weatherForecast, isLoading,
+    } = this.state;
     return (
-      <React.Fragment>
+      <>
         <GlobalStyle />
         <Layout title="Jason Zhang's Weather App" searchCity={this.searchCity}>
           <WeatherApp
@@ -79,7 +85,7 @@ class App extends React.Component {
             isLoading={isLoading}
           />
         </Layout>
-      </React.Fragment>
+      </>
     );
   }
 }

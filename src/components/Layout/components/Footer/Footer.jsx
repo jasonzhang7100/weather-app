@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const FooterBar = styled.div`
   position: absolute;
@@ -12,8 +12,6 @@ const FooterBar = styled.div`
   text-align: center;
 `;
 
-const Footer = () => {
-  return <FooterBar>Designed by Jason Zhang</FooterBar>;
-};
+const Footer = () => <FooterBar>Designed by Jason Zhang</FooterBar>;
 
 export default Footer;

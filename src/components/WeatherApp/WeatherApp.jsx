@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import WeatherCurrent from "./components/WeatherCurrent";
-import WeatherForecast from "./components/WeatherForecast";
+import WeatherCurrent from './components/WeatherCurrent';
+import WeatherForecast from './components/WeatherForecast';
 
 const Layout = styled.div`
   display: flex;
@@ -30,12 +30,13 @@ const WeatherApp = ({
     {isLoading ? (
       <div>loading</div>
     ) : (
-      <React.Fragment>
+      <>
         <WeatherCurrent cityName={cityName} weatherCurrent={weatherCurrent} />
         <TwitterFeed cityName={cityName}>TwitterFeed</TwitterFeed>
         <WeatherForecast weatherForecast={weatherForecast} />
-      </React.Fragment>
+      </>
     )}
   </Layout>
 );
+
 export default WeatherApp;

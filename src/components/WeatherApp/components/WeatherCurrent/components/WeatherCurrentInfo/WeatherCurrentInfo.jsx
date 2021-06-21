@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   flex: 1;
@@ -28,15 +28,28 @@ const OtherMetirc = styled.span`
 `;
 
 const WeatherCurrentInfo = ({ weatherCurrent }) => {
-  const { tempCurrent, conditionCurrent, humidityCurrent, windCurrent } =
-    weatherCurrent;
+  const {
+    tempCurrent, conditionCurrent, humidityCurrent, windCurrent,
+  } = weatherCurrent;
   return (
     <Wrapper>
       <InfoCard>
-        <TempMetric>{tempCurrent}度</TempMetric>
+        <TempMetric>
+          {tempCurrent}
+          °C
+        </TempMetric>
         <WeatherMetirc>{conditionCurrent}</WeatherMetirc>
-        <OtherMetirc>HUMIDITY {humidityCurrent}%</OtherMetirc>
-        <OtherMetirc>WIND {windCurrent} K/M</OtherMetirc>
+        <OtherMetirc>
+          HUMIDITY
+          {humidityCurrent}
+          %
+        </OtherMetirc>
+        <OtherMetirc>
+          WIND
+          {windCurrent}
+          {' '}
+          K/M
+        </OtherMetirc>
       </InfoCard>
     </Wrapper>
   );

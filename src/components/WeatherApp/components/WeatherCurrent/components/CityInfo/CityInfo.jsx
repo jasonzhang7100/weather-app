@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   flex: 2;
@@ -17,12 +17,10 @@ const CityName = styled.div`
   }
 `;
 
-const CityInfo = ({ cityName }) => {
-  return (
-    <Wrapper>
-      <CityName>{cityName}</CityName>
-    </Wrapper>
-  );
-};
+const CityInfo = ({ cityName }) => (
+  <Wrapper>
+    <CityName>{cityName}</CityName>
+  </Wrapper>
+);
 
 export default CityInfo;

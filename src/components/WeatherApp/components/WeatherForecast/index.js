@@ -1,1 +1,1 @@
-export { default } from "./WeatherForecast";
+export { default } from './WeatherForecast';
