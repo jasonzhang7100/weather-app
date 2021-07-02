@@ -3,13 +3,22 @@ import styled from 'styled-components';
 
 import WeatherCurrentInfo from './components/WeatherCurrentInfo';
 import CityInfo from './components/CityInfo';
+import cloudy from '../../../../assets/images/cloudy.jpeg';
+import rainy from '../../../../assets/images/rainy.jpeg';
+import sunny from '../../../../assets/images/sunny.jpeg';
+
+const weatherImgs = {
+  cloudy,
+  rainy,
+  sunny,
+};
 
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
   height: 20rem;
   background: no-repeat fixed center
-    url("src/images/${({ caseName }) => caseName}.jpeg");
+    url(${({ caseName }) => weatherImgs[caseName]});
   background-size: cover;
   color: ${({ caseName }) => (caseName === 'sunny' ? '#000' : '#fff')};
 `;
@@ -19,8 +28,8 @@ const WeatherCurrent = ({ cityName, weatherCurrent }) => {
   const caseName = conditionCurrent.includes('ain')
     ? 'rainy'
     : conditionCurrent.includes('loud')
-      ? 'cloudy'
-      : 'sunny';
+    ? 'cloudy'
+    : 'sunny';
   return (
     <Wrapper caseName={caseName}>
       <WeatherCurrentInfo weatherCurrent={weatherCurrent} />

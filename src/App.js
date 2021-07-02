@@ -1,19 +1,18 @@
 import React from 'react';
-// eslint-disable-next-line no-unused-vars
-import regeneratorRuntime from 'regenerator-runtime';
 import { createGlobalStyle } from 'styled-components';
 
 import Layout from './components/Layout';
 import WeatherApp from './components/WeatherApp';
 import getNewsByCity from './apis/getNewsByCity';
 import getWeatherByCity from './apis/getWeatherByCity';
+import backgroundImage from './assets/images/background.jpeg';
 
 const GlobalStyle = createGlobalStyle`
   body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background: url("src/images/background.jpeg") no-repeat fixed center;
+    background: url(${backgroundImage}) no-repeat fixed center;
     background-size: cover
   }
 `;
@@ -48,9 +47,12 @@ class App extends React.Component {
     const { totalResults, articles } = await getNewsByCity(cityName);
     const {
       // eslint-disable-next-line camelcase
-      temp_c, condition, wind_kph, humidity,
+      temp_c,
+      condition,
+      wind_kph,
+      humidity,
     } = current;
-    const weatherForecast = forecast.forecastday.map((i) => ({
+    const weatherForecast = forecast.forecastday.map(i => ({
       date: i.date,
       conditionForecast: i.day.condition.text,
       icon: i.day.condition.icon,
@@ -76,7 +78,12 @@ class App extends React.Component {
 
   render() {
     const {
-      cityName, weatherCurrent, weatherForecast, totalNews, newsArray, isLoading,
+      cityName,
+      weatherCurrent,
+      weatherForecast,
+      totalNews,
+      newsArray,
+      isLoading,
     } = this.state;
     return (
       <>

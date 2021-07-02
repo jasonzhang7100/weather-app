@@ -28,9 +28,8 @@ const OtherMetirc = styled.span`
 `;
 
 const WeatherCurrentInfo = ({ weatherCurrent }) => {
-  const {
-    tempCurrent, conditionCurrent, humidityCurrent, windCurrent,
-  } = weatherCurrent;
+  const { tempCurrent, conditionCurrent, humidityCurrent, windCurrent } =
+    weatherCurrent;
   return (
     <Wrapper>
       <InfoCard>
@@ -41,14 +40,11 @@ const WeatherCurrentInfo = ({ weatherCurrent }) => {
         <WeatherMetirc>{conditionCurrent}</WeatherMetirc>
         <OtherMetirc>
           HUMIDITY
-          {humidityCurrent}
-          %
+          {humidityCurrent}%
         </OtherMetirc>
         <OtherMetirc>
           WIND
-          {windCurrent}
-          {' '}
-          K/M
+          {windCurrent} K/M
         </OtherMetirc>
       </InfoCard>
     </Wrapper>

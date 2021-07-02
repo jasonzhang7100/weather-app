@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 const CityName = styled.div`
   padding: 0.5rem;
   border-bottom: 1px solid white;
-  font: 350 2rem "Microsoft Yahei";
+  font: 350 2rem 'Microsoft Yahei';
   @media screen and (min-width: 767px) {
     position: absolute;
     right: 3rem;
