@@ -48,9 +48,12 @@ class App extends React.Component {
     const { totalResults, articles } = await getNewsByCity(cityName);
     const {
       // eslint-disable-next-line camelcase
-      temp_c, condition, wind_kph, humidity,
+      temp_c,
+      condition,
+      wind_kph,
+      humidity,
     } = current;
-    const weatherForecast = forecast.forecastday.map((i) => ({
+    const weatherForecast = forecast.forecastday.map(i => ({
       date: i.date,
       conditionForecast: i.day.condition.text,
       icon: i.day.condition.icon,
@@ -76,7 +79,12 @@ class App extends React.Component {
 
   render() {
     const {
-      cityName, weatherCurrent, weatherForecast, totalNews, newsArray, isLoading,
+      cityName,
+      weatherCurrent,
+      weatherForecast,
+      totalNews,
+      newsArray,
+      isLoading,
     } = this.state;
     return (
       <>
