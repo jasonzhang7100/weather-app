@@ -26,28 +26,42 @@ class Header extends React.Component {
     super(props);
     this.state = { cityName: '' };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleEnterKey = this.handleEnterKey.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleInputChange(e) {
-    this.setState({ cityName: e.target.value });
+    const { value } = e.target;
+    this.setState({ cityName: value.replace(/^\S/, (s) => s.toUpperCase()) });
+  }
+
+  handleEnterKey(e) {
+    const { cityName } = this.state;
+    const { searchCity } = this.props;
+    if (e.nativeEvent.keyCode === 13 && cityName) {
+      searchCity(cityName);
+    }
+  }
+
+  handleClick() {
+    const { cityName } = this.state;
+    const { searchCity } = this.props;
+    if (!cityName) { return; }
+    searchCity(cityName);
   }
 
   render() {
-    const { title, searchCity } = this.props;
-    const { cityName } = this.state;
+    const { title } = this.props;
     return (
       <NavBar>
         <LoginMenu>Login</LoginMenu>
         <Title>{title}</Title>
         <Search>
-          <SearchInput value={cityName} onChange={this.handleInputChange} />
-          <SearchButton
-            onClick={() => {
-              searchCity(cityName);
-            }}
-          >
-            SEARCH
-          </SearchButton>
+          <SearchInput
+            onChange={this.handleInputChange}
+            onKeyPress={this.handleEnterKey}
+          />
+          <SearchButton onClick={this.handleClick}>SEARCH</SearchButton>
         </Search>
       </NavBar>
     );

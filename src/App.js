@@ -5,13 +5,15 @@ import { createGlobalStyle } from 'styled-components';
 
 import Layout from './components/Layout';
 import WeatherApp from './components/WeatherApp';
+import getNewsByCity from './apis/getNewsByCity';
+import getWeatherByCity from './apis/getWeatherByCity';
 
 const GlobalStyle = createGlobalStyle`
   body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background: url("src/images/background.jpg") no-repeat fixed center;
+    background: url("src/images/background.jpeg") no-repeat fixed center;
     background-size: cover
   }
 `;
@@ -28,22 +30,22 @@ class App extends React.Component {
         windCurrent: 0,
       },
       weatherForecast: [],
+      totalNews: 0,
+      newsArray: [],
       isLoading: true,
     };
     this.searchCity = this.searchCity.bind(this);
-    this.getWeatherInfo = this.getWeatherInfo.bind(this);
+    this.getCityInfo = this.getCityInfo.bind(this);
   }
 
   componentDidMount() {
-    this.getWeatherInfo();
+    this.getCityInfo();
   }
 
-  async getWeatherInfo() {
+  async getCityInfo() {
     const { cityName } = this.state;
-    const url = `https://api.weatherapi.com/v1/forecast.json?key=88016988f0944ac0a3b103809211206&q=${cityName}&days=3&aqi=no&alerts=no`;
-    const res = await fetch(url);
-    const result = await res.json();
-    const { current, forecast } = result;
+    const { current, forecast } = await getWeatherByCity(cityName);
+    const { totalResults, articles } = await getNewsByCity(cityName);
     const {
       // eslint-disable-next-line camelcase
       temp_c, condition, wind_kph, humidity,
@@ -62,17 +64,19 @@ class App extends React.Component {
         windCurrent: wind_kph,
       },
       weatherForecast,
+      totalNews: totalResults,
+      newsArray: articles,
       isLoading: false,
     });
   }
 
   searchCity(cityName) {
-    this.setState({ isLoading: true, cityName }, this.getWeatherInfo);
+    this.setState({ isLoading: true, cityName }, this.getCityInfo);
   }
 
   render() {
     const {
-      cityName, weatherCurrent, weatherForecast, isLoading,
+      cityName, weatherCurrent, weatherForecast, totalNews, newsArray, isLoading,
     } = this.state;
     return (
       <>
@@ -82,6 +86,8 @@ class App extends React.Component {
             cityName={cityName}
             weatherCurrent={weatherCurrent}
             weatherForecast={weatherForecast}
+            totalNews={totalNews}
+            newsArray={newsArray}
             isLoading={isLoading}
           />
         </Layout>

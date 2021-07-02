@@ -16,9 +16,9 @@ const Wrapper = styled.div`
 
 const WeatherCurrent = ({ cityName, weatherCurrent }) => {
   const { conditionCurrent } = weatherCurrent;
-  const caseName = conditionCurrent.includes('rain')
+  const caseName = conditionCurrent.includes('ain')
     ? 'rainy'
-    : conditionCurrent.includes('cloud')
+    : conditionCurrent.includes('loud')
       ? 'cloudy'
       : 'sunny';
   return (

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import WeatherCurrent from './components/WeatherCurrent';
 import WeatherForecast from './components/WeatherForecast';
+import NewsFeed from './components/NewsFeed/NewsFeed';
 
 const Layout = styled.div`
   display: flex;
@@ -11,19 +12,12 @@ const Layout = styled.div`
   border-radius: 0.5rem;
 `;
 
-const TwitterFeed = styled.div`
-  width: 55%;
-  height: 10rem;
-  background-color: #c5e2e7;
-  @media screen and (max-width: 767px) {
-    width: 100%;
-  }
-`;
-
 const WeatherApp = ({
   cityName,
   weatherCurrent,
   weatherForecast,
+  totalNews,
+  newsArray,
   isLoading,
 }) => (
   <Layout>
@@ -32,7 +26,11 @@ const WeatherApp = ({
     ) : (
       <>
         <WeatherCurrent cityName={cityName} weatherCurrent={weatherCurrent} />
-        <TwitterFeed cityName={cityName}>TwitterFeed</TwitterFeed>
+        <NewsFeed
+          cityName={cityName}
+          totalNews={totalNews}
+          newsArray={newsArray}
+        />
         <WeatherForecast weatherForecast={weatherForecast} />
       </>
     )}
