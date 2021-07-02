@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const NavBar = styled.div`
   display: flex;
@@ -23,16 +24,30 @@ const SearchButton = styled.button``;
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.passCityName = this.passCityName.bind(this);
+    this.state = { cityName: '' };
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleEnterKey = this.handleEnterKey.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  myRef = React.createRef();
+  handleInputChange(e) {
+    const { value } = e.target;
+    this.setState({ cityName: value.replace(/^\S/, (s) => s.toUpperCase()) });
+  }
 
-  passCityName() {
+  handleEnterKey(e) {
+    const { cityName } = this.state;
     const { searchCity } = this.props;
-    const { value } = this.myRef.current;
-    console.log(value);
-    searchCity(value);
+    if (e.nativeEvent.keyCode === 13 && cityName) {
+      searchCity(cityName);
+    }
+  }
+
+  handleClick() {
+    const { cityName } = this.state;
+    const { searchCity } = this.props;
+    if (!cityName) { return; }
+    searchCity(cityName);
   }
 
   render() {
@@ -42,12 +57,20 @@ class Header extends React.Component {
         <LoginMenu>Login</LoginMenu>
         <Title>{title}</Title>
         <Search>
-          <SearchInput ref={this.myRef} />
-          <SearchButton onClick={this.passCityName}>SEARCH</SearchButton>
+          <SearchInput
+            onChange={this.handleInputChange}
+            onKeyPress={this.handleEnterKey}
+          />
+          <SearchButton onClick={this.handleClick}>SEARCH</SearchButton>
         </Search>
       </NavBar>
     );
   }
 }
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  searchCity: PropTypes.func.isRequired,
+};
 
 export default Header;
