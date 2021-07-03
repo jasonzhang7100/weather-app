@@ -2,40 +2,35 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+  flex: 1;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 45%;
-  height: 10rem;
-  background-color: #fff;
-  @media screen and (max-width: 767px) {
-    width: 100%;
-  }
 `;
 
 const WeatherFutureItem = styled.div`
+  width: 10rem;
   text-align: center;
 `;
-// const ItemDate = styled.div``;
 const ItemImg = styled.img`
-  /* padding: 5px 10px; */
   width: 50px;
+  padding-top: 4px;
 `;
-// const ItemTemp = styled.div``;
-// const ItemWeather = styled.div``;
+const ItemInfo = styled.div`
+  padding: 3px 0;
+`;
 
 const WeatherForecast = ({ weatherForecast }) => (
   <Wrapper>
     {weatherForecast.map((i) => (
       <WeatherFutureItem key={i.date}>
-        {/* <div>{new Date(i.date * 1000).getDate()}日</div> */}
-        <div>{i.date}</div>
+        <ItemInfo>{i.date}</ItemInfo>
         <ItemImg src={`https:${i.icon}`} />
-        <div>
+        <ItemInfo>
           {i.tempForecast}
           °C
-        </div>
-        <div>{i.conditionForecast}</div>
+        </ItemInfo>
+        <ItemInfo>{i.conditionForecast}</ItemInfo>
       </WeatherFutureItem>
     ))}
   </Wrapper>

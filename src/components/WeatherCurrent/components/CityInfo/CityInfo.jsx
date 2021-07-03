@@ -2,19 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  flex: 2;
-  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const CityName = styled.div`
-  padding: 0.5rem;
-  border-bottom: 1px solid white;
-  font: 350 2rem 'Microsoft Yahei';
-  @media screen and (min-width: 767px) {
-    position: absolute;
-    right: 3rem;
-    top: 3rem;
-  }
+  padding: 0 1rem 1rem 1rem;
+  border-bottom: 3px solid white;
+  font-size: 3rem;
 `;
 
 const CityInfo = ({ cityName }) => (

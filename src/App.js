@@ -5,15 +5,16 @@ import Layout from './components/Layout';
 import WeatherApp from './components/WeatherApp';
 import getNewsByCity from './apis/getNewsByCity';
 import getWeatherByCity from './apis/getWeatherByCity';
-import backgroundImage from './assets/images/background.jpeg';
 
 const GlobalStyle = createGlobalStyle`
   body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background: url(${backgroundImage}) no-repeat fixed center;
-    background-size: cover
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   }
 `;
 
@@ -45,14 +46,8 @@ class App extends React.Component {
     const { cityName } = this.state;
     const { current, forecast } = await getWeatherByCity(cityName);
     const { totalResults, articles } = await getNewsByCity(cityName);
-    const {
-      // eslint-disable-next-line camelcase
-      temp_c,
-      condition,
-      wind_kph,
-      humidity,
-    } = current;
-    const weatherForecast = forecast.forecastday.map(i => ({
+    const { temp_c, condition, wind_kph, humidity } = current;
+    const weatherForecast = forecast.forecastday.map((i) => ({
       date: i.date,
       conditionForecast: i.day.condition.text,
       icon: i.day.condition.icon,

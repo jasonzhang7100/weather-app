@@ -1,15 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import WeatherCurrent from './components/WeatherCurrent';
-import WeatherForecast from './components/WeatherForecast';
-import NewsFeed from './components/NewsFeed/NewsFeed';
+import WeatherCurrent from '../WeatherCurrent';
+import WeatherForecast from '../WeatherForecast';
+import NewsFeed from '../NewsFeed';
+import VerticleDivider from '../VerticleDivider';
 
-const Layout = styled.div`
+const Bottom = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  overflow: hidden;
-  border-radius: 0.5rem;
+  align-items: center;
+  height: 12rem;
+  background-color: #e5ece6;
+  @media screen and (max-width: 991px) {
+    flex-direction: column;
+    height: 20rem;
+  }
 `;
 
 const WeatherApp = ({
@@ -20,21 +25,22 @@ const WeatherApp = ({
   newsArray,
   isLoading,
 }) => (
-  <Layout>
-    {isLoading ? (
-      <div>loading</div>
-    ) : (
-      <>
-        <WeatherCurrent cityName={cityName} weatherCurrent={weatherCurrent} />
-        <NewsFeed
-          cityName={cityName}
-          totalNews={totalNews}
-          newsArray={newsArray}
-        />
-        <WeatherForecast weatherForecast={weatherForecast} />
-      </>
-    )}
-  </Layout>
+  <>
+    <WeatherCurrent cityName={cityName} weatherCurrent={weatherCurrent} />
+    <Bottom>
+      <NewsFeed
+        cityName={cityName}
+        totalNews={totalNews}
+        newsArray={newsArray}
+      />
+      <VerticleDivider
+        height={'8rem'}
+        color={'rgb(0, 0, 0, 0.2)'}
+        threshold={'991px'}
+      />
+      <WeatherForecast weatherForecast={weatherForecast} />
+    </Bottom>
+  </>
 );
 
 export default WeatherApp;

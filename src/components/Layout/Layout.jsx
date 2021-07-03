@@ -4,21 +4,31 @@ import PropTypes from 'prop-types';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import backgroundImage from '../../assets/images/background.jpeg';
 
-const Children = styled.div`
-  margin: 3rem 6rem;
+const Background = styled.div`
+  overflow: hidden;
+  min-height: 100vh;
+  background: url(${backgroundImage}) no-repeat fixed center;
+  background-size: cover;
 `;
 
-const Layout = ({ title, children, searchCity }) => (
-  <>
-    <Header title={title} searchCity={searchCity} />
+const Children = styled.div`
+  overflow: hidden;
+  margin: 6rem 4rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 16px rgb(0, 0, 0, 0.5);
+`;
+
+const Layout = ({ children, searchCity }) => (
+  <Background>
+    <Header searchCity={searchCity} />
     <Children>{children}</Children>
     <Footer />
-  </>
+  </Background>
 );
 
 Layout.propTypes = {
-  title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   searchCity: PropTypes.func.isRequired,
 };

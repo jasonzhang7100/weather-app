@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const FooterBar = styled.div`
-  position: absolute;
+const Wrapper = styled.div`
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 2.5rem;
@@ -12,6 +12,6 @@ const FooterBar = styled.div`
   text-align: center;
 `;
 
-const Footer = () => <FooterBar>Designed by Jason Zhang</FooterBar>;
+const Footer = () => <Wrapper>Designed by Jason Zhang</Wrapper>;
 
 export default Footer;
