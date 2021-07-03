@@ -14,11 +14,10 @@ const Background = styled.div`
 `;
 
 const Children = styled.div`
-  display: flex;
-  flex-wrap: wrap;
   overflow: hidden;
   margin: 6rem 4rem;
   border-radius: 0.5rem;
+  box-shadow: 0 0 16px rgb(0, 0, 0, 0.5);
 `;
 
 const Layout = ({ children, searchCity }) => (

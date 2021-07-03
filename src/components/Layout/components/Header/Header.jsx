@@ -6,7 +6,6 @@ const Wrapper = styled.div`
   position: fixed;
   top: 0;
   display: flex;
-  justify-content: space-between;
   width: 100%;
   height: 2.5rem;
   align-items: center;
@@ -20,6 +19,7 @@ const Logo = styled.div`
 
 const SearchArea = styled.div`
   padding-right: 0.8rem;
+  margin-left: auto;
 `;
 
 const SearchInput = styled.input`
