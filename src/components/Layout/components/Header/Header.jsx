@@ -2,24 +2,38 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const NavBar = styled.div`
+const Wrapper = styled.div`
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  width: 100%;
   height: 2.5rem;
+  align-items: center;
   background-color: #000;
   color: #fff;
 `;
 
-const LoginMenu = styled.span``;
+const Logo = styled.div`
+  padding-left: 0.8rem;
+`;
 
-const Title = styled.span``;
+const SearchArea = styled.div`
+  padding-right: 0.8rem;
+`;
 
-const Search = styled.div``;
+const SearchInput = styled.input`
+  height: 1rem;
+  box-shadow: none;
+  outline: none;
+`;
 
-const SearchInput = styled.input``;
-
-const SearchButton = styled.button``;
+const SearchButton = styled.button`
+  margin-left: 0.2rem;
+  height: 1.4rem;
+  font-size: 0.6rem;
+  cursor: pointer;
+`;
 
 class Header extends React.Component {
   constructor(props) {
@@ -46,30 +60,29 @@ class Header extends React.Component {
   handleClick() {
     const { cityName } = this.state;
     const { searchCity } = this.props;
-    if (!cityName) { return; }
+    if (!cityName) {
+      return;
+    }
     searchCity(cityName);
   }
 
   render() {
-    const { title } = this.props;
     return (
-      <NavBar>
-        <LoginMenu>Login</LoginMenu>
-        <Title>{title}</Title>
-        <Search>
+      <Wrapper>
+        <Logo>Weather Logo</Logo>
+        <SearchArea>
           <SearchInput
             onChange={this.handleInputChange}
             onKeyPress={this.handleEnterKey}
           />
-          <SearchButton onClick={this.handleClick}>SEARCH</SearchButton>
-        </Search>
-      </NavBar>
+          <SearchButton onClick={this.handleClick}>SEARCH CITY</SearchButton>
+        </SearchArea>
+      </Wrapper>
     );
   }
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired,
   searchCity: PropTypes.func.isRequired,
 };
 
