@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import VerticleDivider from '../../../VerticleDivider';
+// import VerticleDivider from '../../../VerticleDivider';
 
 const Wrapper = styled.div`
   flex: 1;
@@ -13,6 +13,9 @@ const Wrapper = styled.div`
 const InfoCard = styled.div`
   width: 20rem;
   margin: 6rem auto;
+  @media screen and (max-width: 767px) {
+    margin: 2rem auto;
+  }
 `;
 
 const TempMetric = styled.div`
@@ -46,7 +49,8 @@ const WeatherCurrentInfo = ({ weatherCurrent }) => {
         <WeatherMetirc>{conditionCurrent}</WeatherMetirc>
         <OtherMetirc>
           <div>HUMIDITY {humidityCurrent}%</div>
-          <VerticleDivider height={'1rem'} color={'#fff'} />
+          {/* <VerticleDivider height={'1rem'} color={'#000'} /> */}
+          <div>|</div>
           <div>WIND {windCurrent}K/M</div>
         </OtherMetirc>
       </InfoCard>

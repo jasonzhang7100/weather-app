@@ -2,7 +2,7 @@ import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 
 import Layout from './components/Layout';
-import WeatherApp from './components/WeatherApp';
+import AppContainer from './components/AppContainer';
 import getNewsByCity from './apis/getNewsByCity';
 import getWeatherByCity from './apis/getWeatherByCity';
 
@@ -84,7 +84,7 @@ class App extends React.Component {
       <>
         <GlobalStyle />
         <Layout title="Jason Zhang's Weather App" searchCity={this.searchCity}>
-          <WeatherApp
+          <AppContainer
             cityName={cityName}
             weatherCurrent={weatherCurrent}
             weatherForecast={weatherForecast}

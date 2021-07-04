@@ -8,6 +8,7 @@ import backgroundImage from '../../assets/images/background.jpeg';
 
 const Background = styled.div`
   overflow: hidden;
+  min-width: 375px;
   min-height: 100vh;
   background: url(${backgroundImage}) no-repeat fixed center;
   background-size: cover;
@@ -18,6 +19,9 @@ const Children = styled.div`
   margin: 6rem 4rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 16px rgb(0, 0, 0, 0.5);
+  @media screen and (max-width: 767px) {
+    margin: 4rem 1rem;
+  }
 `;
 
 const Layout = ({ children, searchCity }) => (

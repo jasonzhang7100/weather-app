@@ -4,6 +4,9 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   flex: 1;
   height: 100%;
+  @media screen and (max-width: 991px) {
+    order: 1;
+  }
 `;
 
 const NewsHeader = styled.div`
@@ -16,6 +19,9 @@ const Title = styled.div`
   padding-bottom: 5px;
   border-bottom: 0.5px solid black;
   font-weight: 600;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const Page = styled.div`
@@ -24,6 +30,9 @@ const Page = styled.div`
   width: 4rem;
   padding-right: 2rem;
   margin-left: auto;
+  @media screen and (max-width: 500px) {
+    margin-left: 2rem;
+  }
 `;
 
 const NewsList = styled.div`

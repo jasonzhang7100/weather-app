@@ -5,7 +5,11 @@ const Wrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
+  width: 100%;
+  @media screen and (max-width: 991px) {
+    margin-top: 2rem;
+  }
 `;
 
 const WeatherFutureItem = styled.div`
