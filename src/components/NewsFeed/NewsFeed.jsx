@@ -35,15 +35,19 @@ const Page = styled.div`
   }
 `;
 
-const NewsList = styled.div`
-  padding: 0.6rem 2rem;
+const NewsList = styled.ul`
+  padding: 0 2rem;
 `;
 
-const NewsItem = styled.a`
-  display: block;
+const NewsItem = styled.li`
   padding: 0.2rem 0;
-  color: #000;
-  text-decoration: none;
+  a {
+    color: #000;
+    text-decoration: none;
+    &:hover {
+      color: #5f5f5f;
+    }
+  }
 `;
 
 class NewsFeed extends React.Component {
@@ -90,8 +94,10 @@ class NewsFeed extends React.Component {
         </NewsHeader>
         <NewsList>
           {currentNewsArray.map((news, i) => (
-            <NewsItem key={i} href={news.url}>
-              {news.title}
+            <NewsItem key={i}>
+              <a href={news.url} rel="noopener noreferrer" target="_blank">
+                {news.title}
+              </a>
             </NewsItem>
           ))}
         </NewsList>

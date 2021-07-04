@@ -10,11 +10,11 @@ import spinner from '../../assets/images/spinner.svg';
 const Bottom = styled.div`
   display: flex;
   align-items: center;
-  height: 12rem;
+  height: 13rem;
   background-color: #e5ece6;
   @media screen and (max-width: 991px) {
     flex-direction: column;
-    height: 20rem;
+    height: 22rem;
   }
   @media screen and (max-width: 767px) {
     height: 25rem;
@@ -26,8 +26,6 @@ const Loading = styled.div`
   justify-content: center;
   align-items: center;
   height: 32rem;
-  /* color: #fff;
-  font-size: 3rem; */
 `;
 
 const AppContainer = ({
