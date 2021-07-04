@@ -2,10 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import logo from '../../../../assets/images/logo.svg';
+
 const Wrapper = styled.div`
   position: fixed;
   top: 0;
   display: flex;
+  min-width: 375px;
   width: 100%;
   height: 2.5rem;
   align-items: center;
@@ -14,7 +17,20 @@ const Wrapper = styled.div`
 `;
 
 const Logo = styled.div`
-  padding-left: 0.8rem;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+`;
+
+const LogoImg = styled.img`
+  width: 2.2rem;
+`;
+
+const LogoTitle = styled.div`
+  font: 500 1.2rem 'Copperplate';
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const SearchArea = styled.div`
@@ -69,7 +85,10 @@ class Header extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Logo>Weather Logo</Logo>
+        <Logo>
+          <LogoImg src={logo} />
+          <LogoTitle>Weather App</LogoTitle>
+        </Logo>
         <SearchArea>
           <SearchInput
             onChange={this.handleInputChange}

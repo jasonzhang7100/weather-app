@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 
 const CityName = styled.div`
   padding: 0 1rem 1rem 1rem;
-  border-bottom: 3px solid white;
+  border-bottom: 3px solid;
   font-size: 3rem;
 `;
 
